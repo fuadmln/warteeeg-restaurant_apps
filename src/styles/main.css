@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&family=Sriracha&display=swap');
+
+:root{
+    /* Color */
+    --primary-color: #FCD34D;
+    --secondary-color: #DC2626;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    
+    /* Fonts */
+    /* 
+        font-family: 'Sriracha', cursive;
+        font-family: 'Oxygen', sans-serif;
+    */
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin-top: 72px; /*sesuai tinggi header */
+}
+
+.skip{
+    position: absolute;
+    top: -50px;
+}
+.skip:focus{
+    top: 0;
+    z-index: 6;
+}
+
+body{
+    background-color: var(--gray-200,  #E5E7EB);
+    font-family: 'Oxygen', sans-serif;
+}
+
+img {
+    display: block;
+}
+
+/* HEADER */
+header{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 4;
+    display: flex;
+    padding: 12px 5%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color, #FCD34D);
+}
+
+.brand{
+    display: flex; 
+    align-items: center;
+}
+
+.brand h1{
+    display: inline-block; 
+    margin-left: 10px;
+    font-size: 1.4em;
+    font-family: 'Sriracha', cursive;
+    color: var(--secondary-color,  #DC2626);
+}
+
+.brand img{
+    display: inline-block;
+}
+
+nav.nav-links{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: 60%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 18px 32px;
+    background-color: #333;
+    opacity: .96;
+    transform: translate(100%, 0);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav.nav-links.open{
+    transform: translate(0, 0);
+}
+
+nav.nav-links ul li{
+    text-align: center;
+    border-bottom: .7px solid #aaa;
+}
+
+nav.nav-links ul li:last-child{
+    border-bottom: 0;
+}
+
+nav.nav-links ul li a {
+    padding: 5px 15px;
+    display: block;
+    text-decoration: none;
+    color: var(--gray-300, #D1D5DB);
+    min-width: 44px;
+    min-height: 44px;
+    line-height: 44px;
+}
+
+nav.nav-links ul{
+    list-style: none;
+}
+
+button{
+    min-width: 44px;
+    min-height: 44px;
+}
+
+#hamburger{
+    border: 0;
+    background-color: inherit;
+    font-size: 2em;
+    font-stretch: 150%;
+    color: black;
+}
+
+/* MAIN */
+.jumbotron{
+    box-sizing: border-box;
+    padding: 64px 30px 30px;
+    width: 100%;
+    min-height: 240px;
+    background-image: url('../public/images/heros/hero-image_2.jpg');
+    background-position: center;
+    object-fit: cover;
+    position: relative;
+}
+
+.jumbotron::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    /* z-index: -1; */
+    background-color:black;
+    opacity: .8;
+}
+
+.jumbotron > *{
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}
+
+.jumbotron h2{
+    font-size: 2em;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+}
+
+.jumbotron p{
+    margin-top: 36px;
+    font-size: 1em;
+    font-weight: 300;
+    word-spacing: 0; 
+    letter-spacing: 0;
+}
+
+.text-primary{
+    color: var(--primary-color, #FCD34D );
+}
+
+.text-secondary{
+    color: var(--secondary-color, #DC2626 );
+}
+
+.explore{
+    padding: 30px 18px;
+}
+
+.explore h2{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.explore__items{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
+    gap: 16px;
+}
+
+.restaurant{
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden; /* agar border radius work pada flex*/
+    box-shadow: rgba(49, 53, 59, .7) 1px 2px 6px 0px;
+    transition: all 0.1s ease-in-out;
+    background-color: var(--gray-50,  #F9FAFB);
+}
+
+.restaurant:hover{
+    box-shadow: rgba(49, 53, 59, .7) 3px 5px 8px 0px;
+    transition: all 0.2s ease-in-out;
+}
+
+.restaurant img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.res__info{
+    padding: 8px 12px 12px;
+}
+
+.res__name{
+    margin-top: 16px;
+    margin-bottom: 12px;
+    word-spacing: 1px;
+    letter-spacing: .8px;
+}
+
+.res__rating{
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.9;
+}
+
+.star{
+    color: #FFC400; 
+    font-size: 1.3em;
+}
+
+.res__desc{
+    font-weight: 300;
+    max-height: 280px;
+    overflow: scroll;
+    overflow-x: hidden;
+    letter-spacing: .7px;
+}
+
+.res__city{
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    padding: 6px;
+    background-color: rgba(0, 0, 0, .8);
+    color: var(--primary-color, #FCD34D);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* FOOTER */
+footer{
+    padding: 16px 40px;
+    background-color: var(--primary-color, #FCD34D);
+}
+footer p{
+    text-align: center;
+}
+
+/* Scroll bar */
+
+/* Width */
+p::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* TABLET DEVICE LAYOUT */
+@media only screen and (min-width: 600px) {
+    body{
+        margin-top: 75px; /*sesuai tinggi header */
+    }
+
+    header .brand h1{
+        font-size: 1.8em;
+    }
+
+    #hamburger{
+        display: none;
+    }
+
+    nav.nav-links{
+        position: initial;
+        display: inline-block;
+        height: auto;
+        padding: 0;
+        align-items: center;
+        width: auto;
+        min-width: 260px;
+        background-color: inherit;
+        transform: translate(0, 0);
+    }
+
+    nav.nav-links ul{
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+    }
+    
+    nav.nav-links ul li{
+        transition: all 0.1s ease-in-out;
+        border-bottom: 0;
+    }
+
+    nav.nav-links ul li:hover{
+        transform: scale(1.2);
+        transition: all .1s ease-in-out;
+    }
+
+    nav.nav-links ul li a {
+        padding: 0;
+        font-size: 1.2em;
+        font-weight: 600;
+        color: black;
+    }
+
+    nav.nav-links ul li a:hover{
+        text-decoration: underline;
+    }
+
+    .jumbotron{
+        min-height: 360px;
+        padding-top: 90px;
+    }
+
+    .jumbotron h2{
+        font-size: 3em;
+        letter-spacing: 4px;
+        word-spacing: 2px;
+    }
+
+    .jumbotron p{
+        margin-top: 50px;
+        font-size: 1.2em;
+    }
+
+    .explore{
+        padding: 30px 30px;
+    }
+
+    .res__info{
+        padding: 10px 18px 18px;
+    }
+
+    .hide-on-medium{
+        display: none;
+    }
+    
+}
+
+/* DEESKTOP DEVICE LAYOUT */
+@media only screen and (min-width: 992px) {
+    .explore{
+        padding: 30px 50px;
+    }
+
+}
