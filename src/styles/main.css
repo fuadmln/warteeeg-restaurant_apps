@@ -10,10 +10,8 @@
     --gray-300: #D1D5DB;
     
     /* Fonts */
-    /* 
-        font-family: 'Sriracha', cursive;
-        font-family: 'Oxygen', sans-serif;
-    */
+    --sriracha: 'Sriracha', cursive;
+    --oxygen: 'Oxygen', sans-serif;
 }
 
 *{
@@ -36,7 +34,7 @@ body{
 
 body{
     background-color: var(--gray-200,  #E5E7EB);
-    font-family: 'Oxygen', sans-serif;
+    font-family: var(--oxygen);
 }
 
 img {
@@ -66,7 +64,7 @@ header{
     display: inline-block; 
     margin-left: 10px;
     font-size: 1.4em;
-    font-family: 'Sriracha', cursive;
+    font-family: var(--sriracha);
     color: var(--secondary-color,  #DC2626);
 }
 
@@ -203,13 +201,13 @@ button{
     position: relative;
     border-radius: 8px;
     overflow: hidden; /* agar border radius work pada flex*/
-    box-shadow: rgba(49, 53, 59, .7) 1px 2px 6px 0px;
+    box-shadow: rgba(49, 53, 59, .7) 1px 2px 6px 0;
     transition: all 0.1s ease-in-out;
     background-color: var(--gray-50,  #F9FAFB);
 }
 
 .restaurant:hover{
-    box-shadow: rgba(49, 53, 59, .7) 3px 5px 8px 0px;
+    box-shadow: rgba(49, 53, 59, .7) 3px 5px 8px 0;
     transition: all 0.2s ease-in-out;
 }
 
@@ -245,9 +243,13 @@ button{
 .res__desc{
     font-weight: 300;
     max-height: 280px;
-    overflow: scroll;
-    overflow-x: hidden;
     letter-spacing: .7px;
+    /* max line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 
 .res__city{
