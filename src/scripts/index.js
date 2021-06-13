@@ -2,18 +2,18 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 import data from '../DATA.json';
 
-const hamburgerButtonElement = document.querySelector("#hamburger");
-const navLinksElement = document.querySelector(".nav-links");
-const mainElement = document.querySelector("main");
+const hamburgerButtonElement = document.querySelector('#hamburger');
+const navLinksElement = document.querySelector('.nav-links');
+const mainElement = document.querySelector('main');
 
-hamburgerButtonElement.addEventListener("click", event => {
-  navLinksElement.classList.toggle("open");
+hamburgerButtonElement.addEventListener('click', event => {
+  navLinksElement.classList.toggle('open');
   event.stopPropagation();
 });
 
 
-mainElement.addEventListener("click", event => {
-  navLinksElement.classList.remove("open");
+mainElement.addEventListener('click', event => {
+  navLinksElement.classList.remove('open');
   event.stopPropagation();
 })
 
@@ -39,5 +39,5 @@ restaurants.forEach(restaurant => {
   restaurantsHTML += getRestaurantHTML(restaurant);
 });
 
-const exploreRestaurantElement = document.querySelector(".explore__items");
+const exploreRestaurantElement = document.querySelector('.explore__items');
 exploreRestaurantElement.innerHTML = restaurantsHTML;
