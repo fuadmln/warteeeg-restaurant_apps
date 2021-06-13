@@ -6,19 +6,17 @@ const hamburgerButtonElement = document.querySelector('#hamburger');
 const navLinksElement = document.querySelector('.nav-links');
 const mainElement = document.querySelector('main');
 
-hamburgerButtonElement.addEventListener('click', event => {
+hamburgerButtonElement.addEventListener('click', (event) => {
   navLinksElement.classList.toggle('open');
   event.stopPropagation();
 });
 
-
-mainElement.addEventListener('click', event => {
+mainElement.addEventListener('click', (event) => {
   navLinksElement.classList.remove('open');
   event.stopPropagation();
-})
+});
 
-
-const restaurants = data.restaurants;
+const { restaurants } = data;
 
 const getRestaurantHTML = (restaurant) => `
 <div class="restaurant" tabindex="0">
@@ -35,7 +33,7 @@ const getRestaurantHTML = (restaurant) => `
 `;
 
 let restaurantsHTML = '';
-restaurants.forEach(restaurant => {
+restaurants.forEach((restaurant) => {
   restaurantsHTML += getRestaurantHTML(restaurant);
 });
 
