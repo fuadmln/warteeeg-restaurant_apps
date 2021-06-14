@@ -11,5 +11,10 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+    }
 }
