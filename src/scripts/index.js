@@ -1,6 +1,6 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
-import data from '../DATA.json';
+import data from './data/DATA.json';
 import { createRestaurantTemplate } from './views/templates/restaurant-creator';
 
 const hamburgerButtonElement = document.querySelector('#hamburger');
