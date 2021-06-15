@@ -1,20 +1,14 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
+import App from './views/app';
 import data from './data/DATA.json';
 import { createRestaurantTemplate } from './views/templates/restaurant-creator';
 
-const hamburgerButtonElement = document.querySelector('#hamburger');
-const navLinksElement = document.querySelector('.nav-links');
-const mainElement = document.querySelector('main');
-
-hamburgerButtonElement.addEventListener('click', (event) => {
-  navLinksElement.classList.toggle('open');
-  event.stopPropagation();
-});
-
-mainElement.addEventListener('click', (event) => {
-  navLinksElement.classList.remove('open');
-  event.stopPropagation();
+// eslint-disable-next-line no-unused-vars
+const app = new App({
+  button: document.querySelector('#hamburger'),
+  drawer: document.querySelector('#navigationDrawer'),
+  content: document.querySelector('#main'),
 });
 
 const { restaurants } = data;
