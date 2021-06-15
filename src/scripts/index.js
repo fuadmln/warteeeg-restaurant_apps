@@ -17,3 +17,11 @@ const exploreRestaurantElement = document.querySelector('.explore__items');
 restaurants.forEach((restaurant) => {
   exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
 });
+
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
+});
