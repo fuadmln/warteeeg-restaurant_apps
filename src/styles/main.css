@@ -229,6 +229,16 @@ button{
     letter-spacing: .8px;
 }
 
+.res__name a{
+    text-decoration: none;
+    color: black;
+}
+
+.res__name a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
 .res__rating{
     text-align: right;
     font-weight: bold;
