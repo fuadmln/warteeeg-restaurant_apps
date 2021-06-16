@@ -1,12 +1,29 @@
+import RestaurantSource from '../../data/restaurant-source';
+import { createRestaurantTemplate } from '../templates/restaurant-creator';
+
 const Home = {
   async render() {
     return `
-      <h2>Home Page</h2>
+    <div class="jumbotron">
+        <h2>Five Star <span class="text-secondary">Taste</span>,</h2>
+        <h2>Street Food <span class="text-primary">Prices</span>.</h2>
+        <p>Warteeeg yang e-nya tiga.</p>
+    </div>
+
+    <section class="explore">
+        <h2>Explore Restaurant</h2>
+        <div class="explore__items">
+        </div>
+    </section>
     `;
   },
 
   async afterRender() {
-    // Fungsi ini akan dipanggil setelah render()
+    const restaurants = await RestaurantSource.restaurantsList();
+    const exploreRestaurantElement = document.querySelector('.explore__items');
+    restaurants.forEach((restaurant) => {
+      exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
+    });
   },
 };
 
