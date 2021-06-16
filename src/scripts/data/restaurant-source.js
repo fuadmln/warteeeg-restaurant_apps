@@ -1,6 +1,6 @@
 import API_ENDPOINT from '../globals/api-endpoint';
 
-class restaurantSource {
+class RestaurantSource {
   static async restaurantsList() {
     const response = await fetch(API_ENDPOINT.LIST);
     const responseJson = await response.json();
@@ -19,4 +19,4 @@ class restaurantSource {
   }
 }
 
-export default restaurantSource;
+export default RestaurantSource;
