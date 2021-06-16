@@ -7,7 +7,7 @@ const createRestaurantTemplate = (restaurant) => `
       <div class="res__rating">
         Rating ${restaurant.rating} <span class="star" aria-label="rating star">&#9733</span>
       </div>
-      <h3 class="res__name">${restaurant.name}</h3>
+      <h3 class="res__name"><a href="#/detail/${restaurant.id}">${restaurant.name}</a></h3>
       <p class="res__desc">${restaurant.description.slice(0, 280)}</p>
       <div class="res__city">Kota ${restaurant.city}</div>
     </div>
