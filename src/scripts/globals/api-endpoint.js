@@ -5,6 +5,11 @@ const API_ENDPOINT = {
   SEARCH: (query) => `${CONFIG.BASE_URL}search?q=${query}`,
   DETAIL: (id) => `${CONFIG.BASE_URL}detail/${id}`,
   REVIEW: `${CONFIG.BASE_URL}review`,
+  BASE_IMAGE_URL: {
+    small: (id) => `${CONFIG.BASE_URL}images/small/${id}`,
+    medium: (id) => `${CONFIG.BASE_URL}images/medium/${id}`,
+    large: (id) => `${CONFIG.BASE_URL}images/large/${id}`,
+  },
 };
 
 export default API_ENDPOINT;
