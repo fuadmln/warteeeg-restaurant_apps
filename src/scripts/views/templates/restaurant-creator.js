@@ -2,7 +2,7 @@ import API_ENDPOINT from '../../globals/api-endpoint';
 
 const createRestaurantTemplate = (restaurant) => `
   <div class="restaurant" tabindex="0">
-    <img src="${API_ENDPOINT.small(restaurant.pictureId)}" alt="${restaurant.name}">
+    <img src="${API_ENDPOINT.BASE_IMAGE_URL.small(restaurant.pictureId)}" alt="${restaurant.name}">
     <div class="res__info">
       <div class="res__rating">
         Rating ${restaurant.rating} <span class="star" aria-label="rating star">&#9733</span>
