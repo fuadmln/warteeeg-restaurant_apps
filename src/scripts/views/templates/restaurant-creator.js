@@ -18,17 +18,11 @@ const createRestaurantDetail = (restaurantData) => {
   const { restaurant } = restaurantData;
 
   // categories to string, ex: 'Italia, Modern'
-  const categories = () => {
-    const arr = [];
-    restaurant.categories.forEach((category) => {
-      arr.push(category.name);
-    });
-    return arr.join(', ');
-  };
+  const categories = () => restaurant.categories.map((category) => category.name).join(', ');
 
   return `
   <div class="restaurant">
-    <img src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="nama res">
+    <img src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}">
     <div class="res__info">
       <h2 class="res__name">${restaurant.name}</h2>
       <p class="res__desc">${restaurant.description}</p>
@@ -62,22 +56,8 @@ const createRestaurantDetail = (restaurantData) => {
 
 const createMenuSection = (restaurantData) => {
   const { restaurant } = restaurantData;
-
-  const foodList = () => {
-    let foods = '';
-    restaurant.menus.foods.forEach((food) => {
-      foods += `<li>${food.name}</li>`;
-    });
-    return foods;
-  };
-
-  const drinkList = () => {
-    let drinks = '';
-    restaurant.menus.drinks.forEach((drink) => {
-      drinks += `<li>${drink.name}</li>`;
-    });
-    return drinks;
-  };
+  const foodList = () => restaurant.menus.foods.map((food) => `<li>${food.name}</li>`).join('');
+  const drinkList = () => restaurant.menus.drinks.map((drink) => `<li>${drink.name}</li>`).join('');
 
   return `
     <h2>Menus</h2>
@@ -98,22 +78,15 @@ const createMenuSection = (restaurantData) => {
 
 const createReviewSection = (restaurantData) => {
   const { restaurant } = restaurantData;
-  const reviews = () => {
-    let reviewsElement = '';
-    restaurant.customerReviews.forEach((review) => {
-      reviewsElement += `
+
+  const reviews = () => restaurant.customerReviews.map((review) => `
       <div class="review">
         <div class="review__name">${review.name}</div>
         <div class="review__date">${review.date}</div>
         <div class="review__comment">
         ${review.review}
         </div>
-      </div>
-      `;
-    });
-
-    return reviewsElement;
-  };
+      </div>`).join('');
 
   return `
     <h2>Reviews</h2>
