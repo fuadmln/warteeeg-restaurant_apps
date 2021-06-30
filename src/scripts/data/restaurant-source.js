@@ -10,7 +10,7 @@ class RestaurantSource {
   static async searchReastaurant(query) {
     const response = await fetch(API_ENDPOINT.SEARCH(query));
     const responseJson = await response.json();
-    return responseJson.results;
+    return responseJson.restaurants;
   }
 
   static async detailRestaurant(id) {
