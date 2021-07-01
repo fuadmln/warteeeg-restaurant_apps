@@ -1,14 +1,14 @@
 {
-  "name": "restaurant-apps",
-  "short_name": "restaurant-apps",
-  "description": "",
+  "name": "Warteeeg Restauran App",
+  "short_name": "Warteeeg",
+  "description": "Best app to find your favourite restaurant",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
   "start_url": "/?homescreen=1",
   "background_color": "#fff",
-  "theme_color": "#fff",
+  "theme_color": "#fcd34d",
   "icons": [
     {
       "src": "/favicons/android-chrome-36x36.png",
