@@ -52,6 +52,16 @@ module.exports = {
       logo: path.resolve(__dirname, 'src/public/w.png'),
       outputPath: '/images/favicons',
       prefix: 'favicons/',
+      favicons: {
+        appName: 'Warteeeg Restauran App',
+        appShortName: 'Warteeeg',
+        appDescription: 'Best app to find your favourite restaurant',
+        developerName: 'Fuad Maulana',
+        developerURL: 'http://github.com/fuadmln',
+        background: '#fff',
+        theme_color: '#fcd34d',
+        display: 'standalone',
+      },
     }),
   ],
 };
