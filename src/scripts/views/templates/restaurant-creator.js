@@ -105,9 +105,47 @@ const createReviewSection = (restaurantData) => {
   `;
 };
 
+const createSearchResults = (restaurants) => {
+  let results = '';
+
+  if (restaurants.length) {
+    results = restaurants.map((restaurant) => `
+      <div class="restaurant">
+        <div class="image">
+          <img src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" alt="${restaurant.name}">
+          <div class="rating">${restaurant.rating}<span class="star" aria-label="rating star">★</span></div>
+        </div>
+        <div class="info">
+          <h3><a href="#/detail/${restaurant.id}">${restaurant.name}</a></h3>
+          
+          <p>${restaurant.city} City</p>
+          <p class="desc">${restaurant.description}
+          </p>
+        </div>
+      </div>
+    `).join('');
+  } else {
+    results = `
+      <div class="no-results">
+        <p><b>your search didn't match any :(</b></p>
+        <br>
+        <p>Try different keywords or<br>try fewer keywords.</p>
+      </div>
+    `;
+  }
+
+  return `
+    <h2 class="search-query">Search result for: <span id="search-query"><span></h2>
+    <div class="results" id="searchResult">
+      ${results}
+    </div>
+  `;
+};
+
 export {
   createRestaurantTemplate,
   createRestaurantDetail,
   createMenuSection,
   createReviewSection,
+  createSearchResults,
 };
