@@ -1,5 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable no-restricted-globals */
+
+import 'regenerator-runtime';
+import CacheHelper from './utils/cache-helper';
+
+const { assets } = global.serviceWorkerOption;
+
 self.addEventListener('install', (event) => {
   console.log('Installing Service Worker ...');
 
