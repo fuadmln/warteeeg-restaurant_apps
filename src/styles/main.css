@@ -338,6 +338,22 @@ button{
     background-color: #F1F3F4;
 }
 
+.like-btn {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    font-size: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #db0000;
+    color: white
+}
+
 .menu{
     background-color: #fff;
     padding-left: 10px;
