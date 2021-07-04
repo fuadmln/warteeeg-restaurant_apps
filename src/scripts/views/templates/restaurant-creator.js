@@ -142,10 +142,20 @@ const createSearchResults = (restaurants) => {
   `;
 };
 
+const createLikeButtonTemplate = () => `
+  <button class="like-btn">&#9825;</button>
+`;
+
+const createLikedButtonTemplate = () => `
+  <button class="like-btn" style="font-size: 36px;">&#9829;</button>
+`;
+
 export {
   createRestaurantTemplate,
   createRestaurantDetail,
   createMenuSection,
   createReviewSection,
   createSearchResults,
+  createLikeButtonTemplate,
+  createLikedButtonTemplate,
 };
