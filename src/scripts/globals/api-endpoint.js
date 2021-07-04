@@ -10,6 +10,7 @@ const API_ENDPOINT = {
     medium: (id) => `${CONFIG.BASE_URL}images/medium/${id}`,
     large: (id) => `${CONFIG.BASE_URL}images/large/${id}`,
   },
+  POST_REVIEW: `${CONFIG.BASE_URL}review`,
 };
 
 export default API_ENDPOINT;
