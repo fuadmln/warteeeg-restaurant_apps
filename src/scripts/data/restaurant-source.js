@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../globals/api-endpoint';
+import CONFIG from '../globals/config';
 
 class RestaurantSource {
   static async restaurantsList() {
@@ -16,6 +17,21 @@ class RestaurantSource {
   static async detailRestaurant(id) {
     const response = await fetch(API_ENDPOINT.DETAIL(id));
     return response.json();
+  }
+
+  static async postRestaurantReview(review) {
+    const response = await fetch(API_ENDPOINT.POST_REVIEW, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': `${CONFIG.API_KEY}`,
+      },
+      body: JSON.stringify(review),
+    })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return response.customerReviews;
   }
 }
 
