@@ -619,6 +619,16 @@ h2.search-query{
     font-size: .9em;
 }
 
+/* Favorite Page */
+#favorite{
+    padding: 30px 18px;
+}
+
+#favorite h2{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 
 
 /* FOOTER */
