@@ -52,7 +52,7 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, 'src/public/w.png'),
       outputPath: '/images/favicons',
-      prefix: 'favicons/',
+      prefix: '/images/favicons/',
       manifest: path.resolve(__dirname, 'src/public/manifest.json'),
       favicons: {
         appName: 'Warteeeg Restauran App',
