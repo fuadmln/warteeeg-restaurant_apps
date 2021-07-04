@@ -4,6 +4,8 @@ import {
   createRestaurantDetail,
   createMenuSection,
   createReviewSection,
+  createLikeButtonTemplate,
+  createLikedButtonTemplate,
 } from '../templates/restaurant-creator';
 
 const Detail = {
@@ -12,6 +14,7 @@ const Detail = {
       <div class="detail" id="detail"></div>
       <section class="menu" id="menu"></section>
       <section class="review-section" id="review"></section>
+      <div id="like-button-container"></div>
     `;
   },
 
@@ -26,6 +29,9 @@ const Detail = {
     detailContainer.innerHTML = createRestaurantDetail(restaurant);
     menuContainer.innerHTML = createMenuSection(restaurant);
     reviewContainer.innerHTML = createReviewSection(restaurant);
+
+    const likeButtonContainer = document.querySelector('#like-button-container');
+    likeButtonContainer.innerHTML = createLikeButtonTemplate();
   },
 };
 
