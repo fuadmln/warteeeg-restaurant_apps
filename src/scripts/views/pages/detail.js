@@ -4,9 +4,8 @@ import {
   createRestaurantDetail,
   createMenuSection,
   createReviewSection,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
 } from '../templates/restaurant-creator';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
   async render() {
@@ -30,8 +29,10 @@ const Detail = {
     menuContainer.innerHTML = createMenuSection(restaurant);
     reviewContainer.innerHTML = createReviewSection(restaurant);
 
-    const likeButtonContainer = document.querySelector('#like-button-container');
-    likeButtonContainer.innerHTML = createLikeButtonTemplate();
+    LikeButtonInitiator.init({
+      likeButtonContainer: document.querySelector('#like-button-container'),
+      restaurant: restaurant.restaurant,
+    });
   },
 };
 
