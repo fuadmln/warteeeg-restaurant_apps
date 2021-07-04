@@ -4,6 +4,7 @@ import {
   createRestaurantDetail,
   createMenuSection,
   createReviewSection,
+  createLoader,
 } from '../templates/restaurant-creator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 
@@ -11,7 +12,7 @@ const Detail = {
   async render() {
     return `
       <div class="detail" id="detail"></div>
-      <section class="menu" id="menu"></section>
+      <section class="menu" id="menu">${createLoader()}</section>
       <section class="review-section" id="review"></section>
       <div id="like-button-container"></div>
     `;
