@@ -14,22 +14,3 @@ const API_ENDPOINT = {
 };
 
 export default API_ENDPOINT;
-
-// URL
-// /review
-
-// Method:
-// POST
-
-// Headers
-// Content-Type: application/x-www-form-urlencoded | application/json
-// X-Auth-Token: YOUR_API_KEY (for test using 12345)
-// Body
-
-// Pilih salah satu
-
-// urlencoded :
-// id : string
-// name : string
-// review : string
-// JSON: {"id" : string, "name" : string, "review" : string }
