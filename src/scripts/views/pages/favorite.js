@@ -15,9 +15,18 @@ const Favorite = {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
 
     const exploreRestaurantElement = document.querySelector('#favorites');
-    restaurants.forEach((restaurant) => {
-      exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
-    });
+
+    if (restaurants.length !== 0) {
+      restaurants.forEach((restaurant) => {
+        exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
+      });
+    } else {
+      exploreRestaurantElement.innerHTML = `
+        <div class="no-results" style="text-align: center;">
+          <p>No favorite restaurant yet</p>
+        </div>
+      `;
+    }
   },
 };
 
