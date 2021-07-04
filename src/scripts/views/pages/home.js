@@ -1,5 +1,5 @@
 import RestaurantSource from '../../data/restaurant-source';
-import { createRestaurantTemplate } from '../templates/restaurant-creator';
+import { createRestaurantTemplate, createLoader } from '../templates/restaurant-creator';
 
 const Home = {
   async render() {
@@ -13,6 +13,7 @@ const Home = {
     <section class="explore">
         <h2>Explore Restaurant</h2>
         <div class="explore__items">
+          ${createLoader()}
         </div>
     </section>
     `;
@@ -21,6 +22,9 @@ const Home = {
   async afterRender() {
     const restaurants = await RestaurantSource.restaurantsList();
     const exploreRestaurantElement = document.querySelector('.explore__items');
+    const loader = document.querySelector('#loader');
+    loader.style.display = 'none';
+
     restaurants.forEach((restaurant) => {
       exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
     });
