@@ -1,5 +1,5 @@
 import RestaurantSource from '../../data/restaurant-source';
-import { createSearchResults } from '../templates/restaurant-creator';
+import { createSearchResults, createLoader } from '../templates/restaurant-creator';
 
 const Search = {
   async render() {
@@ -17,14 +17,22 @@ const Search = {
                 placeholder="search by name, category or menu">
           </div>
       </div>
+      ${createLoader()}
     `;
   },
 
   async afterRender() {
+    const loader = document.querySelector('#loader');
+    loader.style.display = 'none';
+
     const runSearch = async () => {
       const query = document.querySelector("input[name='query']").value;
-      const restaurants = await RestaurantSource.searchReastaurant(query);
       const mainContainer = document.querySelector('#main');
+
+      loader.style.display = 'block';
+      const restaurants = await RestaurantSource.searchReastaurant(query);
+
+      loader.style.display = 'none';
 
       if (document.querySelector('#searchResult')) {
         document.querySelector('h2.search-query').remove();
