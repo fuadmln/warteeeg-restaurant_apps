@@ -95,6 +95,7 @@ const createReviewSection = (restaurantData) => {
     </div>
     <div class="add-review">
       <h3>Add review</h3>
+      <div id="form-message" class="form-message"></div>
       <form id="post-review">
         <input type="text" name="commnet-name" id="comment-name" placeholder="your name">
         <textarea name="review-comment" id="review-comment" rows="5"
