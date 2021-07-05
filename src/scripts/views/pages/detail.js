@@ -34,6 +34,34 @@ const Detail = {
       likeButtonContainer: document.querySelector('#like-button-container'),
       restaurant: restaurant.restaurant,
     });
+
+    const form = document.querySelector('#post-review');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.querySelector('#comment-name');
+      const review = document.querySelector('#review-comment');
+
+      if (name.value && review.value) {
+        console.log('bisa dikirim');
+        const reviewData = {
+          id: url.id,
+          name: name.value,
+          review: review.value,
+        };
+
+        const postResponse = await RestaurantSource.postRestaurantReview(reviewData);
+        console.log(postResponse);
+        if (postResponse.status === 200) {
+          console.log('berhasil kirim');
+          form.reset();
+        } else {
+          console.log('can\'t sent review, error has been occured');
+        }
+      } else {
+        console.log('lengkapi data');
+      }
+    });
   },
 };
 
