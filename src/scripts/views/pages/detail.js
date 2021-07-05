@@ -41,9 +41,9 @@ const Detail = {
       e.preventDefault();
       const name = document.querySelector('#comment-name');
       const review = document.querySelector('#review-comment');
+      const formMessage = document.querySelector('#form-message');
 
       if (name.value && review.value) {
-        console.log('bisa dikirim');
         const reviewData = {
           id: url.id,
           name: name.value,
@@ -51,15 +51,18 @@ const Detail = {
         };
 
         const postResponse = await RestaurantSource.postRestaurantReview(reviewData);
-        console.log(postResponse);
+
         if (postResponse.status === 200) {
-          console.log('berhasil kirim');
           form.reset();
+          formMessage.innerHTML = 'Review succesfully posted';
+          formMessage.style.color = 'green';
         } else {
-          console.log('can\'t sent review, error has been occured');
+          formMessage.innerHTML = 'Can\'t sent review, error has been occured';
+          formMessage.style.color = 'red';
         }
       } else {
-        console.log('lengkapi data');
+        formMessage.innerHTML = 'Name and review required to fill';
+        formMessage.style.color = 'red';
       }
     });
   },
