@@ -440,6 +440,7 @@ button{
     font-size: 16px;
     font-weight: 600;
 }
+
 .add-review input, .add-review textarea{
     display: block;
     width: 100%;
@@ -471,6 +472,12 @@ button{
     font-family: var(--oxygen);
     letter-spacing: 2px;
     cursor: pointer;
+}
+
+.form-message{
+    margin-bottom: 10px; 
+    font-style: italic;
+    font-size: 14px;
 }
 
 /* SEARCH PAGE */
