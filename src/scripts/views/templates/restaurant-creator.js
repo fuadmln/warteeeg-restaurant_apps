@@ -95,11 +95,11 @@ const createReviewSection = (restaurantData) => {
     </div>
     <div class="add-review">
       <h3>Add review</h3>
-      <form action="">
-        <input type="text" name="commnet-name" placeholder="your name">
+      <form id="post-review">
+        <input type="text" name="commnet-name" id="comment-name" placeholder="your name">
         <textarea name="review-comment" id="review-comment" rows="5"
           placeholder="write your review about this place..."></textarea>
-        <button>Post</button>
+        <button type="submit" aria-label="submit your review">Post</button>
       </form>
     </div>
   `;
