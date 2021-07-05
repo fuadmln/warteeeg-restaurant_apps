@@ -31,7 +31,7 @@ class RestaurantSource {
       .catch((error) => {
         throw new Error(error);
       });
-    return response.customerReviews;
+    return response;
   }
 }
 
