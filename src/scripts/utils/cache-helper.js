@@ -33,7 +33,9 @@ const CacheHelper = {
       return response;
     }
 
-    await this._addCache(request);
+    if (request.method === 'GET') {
+      await this._addCache(request);
+    }
     return response;
   },
 
