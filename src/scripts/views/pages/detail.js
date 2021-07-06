@@ -22,6 +22,17 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
 
+    if (!restaurant) {
+      const main = document.querySelector('#main');
+      main.innerHTML = `
+        <div id='no-connection' style="text-align: center; font-weight: bold; padding: 12px">
+          FAILED TO FETCH
+          <br>
+          Check your internet connection
+        </div>`;
+      return;
+    }
+
     const detailContainer = document.querySelector('#detail');
     const menuContainer = document.querySelector('#menu');
     const reviewContainer = document.querySelector('#review');
