@@ -15,6 +15,8 @@ const createRestaurantTemplate = (restaurant) => `
 `;
 
 const createRestaurantDetail = (restaurantData) => {
+  if (!restaurantData) { return ''; }
+
   const { restaurant } = restaurantData;
 
   // categories to string, ex: 'Italia, Modern'
@@ -55,6 +57,7 @@ const createRestaurantDetail = (restaurantData) => {
 };
 
 const createMenuSection = (restaurantData) => {
+  if (!restaurantData) { return ''; }
   const { restaurant } = restaurantData;
   const foodList = () => restaurant.menus.foods.map((food) => `<li>${food.name}</li>`).join('');
   const drinkList = () => restaurant.menus.drinks.map((drink) => `<li>${drink.name}</li>`).join('');
@@ -77,6 +80,7 @@ const createMenuSection = (restaurantData) => {
 };
 
 const createReviewSection = (restaurantData) => {
+  if (!restaurantData) { return ''; }
   const { restaurant } = restaurantData;
 
   const reviews = () => restaurant.customerReviews.map((review) => `
