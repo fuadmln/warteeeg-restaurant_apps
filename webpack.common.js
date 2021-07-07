@@ -53,7 +53,6 @@ module.exports = {
       logo: path.resolve(__dirname, 'src/public/w.png'),
       outputPath: '/images/favicons',
       prefix: '/images/favicons/',
-      manifest: path.resolve(__dirname, 'src/public/manifest.json'),
       favicons: {
         appName: 'Warteeeg Restauran App',
         appShortName: 'Warteeeg',
