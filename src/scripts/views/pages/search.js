@@ -16,6 +16,7 @@ const Search = {
             <input type="search" name="query" aria-label="Search through site content"
                 placeholder="search by name, category or menu">
           </div>
+          <div id="error-message"></div>
       </div>
       ${createLoader()}
     `;
@@ -31,6 +32,18 @@ const Search = {
 
       loader.style.display = 'block';
       const restaurants = await RestaurantSource.searchReastaurant(query);
+
+      if (!restaurants) {
+        loader.style.display = 'none';
+        const errorContainer = document.querySelector('#error-message');
+        errorContainer.innerHTML = `
+          <div id='no-connection' style="text-align: center; font-weight: bold; padding: 12px">
+            FAILED TO FETCH
+            <br>
+            Check your internet connection
+          </div>`;
+        return;
+      }
 
       loader.style.display = 'none';
 
