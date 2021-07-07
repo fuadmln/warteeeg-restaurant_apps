@@ -12,7 +12,7 @@ const Home = {
 
     <section class="explore">
         <h2>Explore Restaurant</h2>
-        <div class="explore__items">
+        <div class="explore__items" id="explore-restaurants">
           ${createLoader()}
         </div>
     </section>
@@ -21,8 +21,22 @@ const Home = {
 
   async afterRender() {
     const restaurants = await RestaurantSource.restaurantsList();
-    const exploreRestaurantElement = document.querySelector('.explore__items');
     const loader = document.querySelector('#loader');
+
+    if (!restaurants) {
+      loader.style.display = 'none';
+      const main = document.querySelector('#explore-restaurants');
+      main.innerHTML = `
+        <div id='no-connection' style="text-align: center; font-weight: bold; padding: 12px">
+          FAILED TO FETCH
+          <br>
+          Check your internet connection
+        </div>`;
+      return;
+    }
+
+    const exploreRestaurantElement = document.querySelector('#explore-restaurants');
+
     loader.style.display = 'none';
 
     restaurants.forEach((restaurant) => {
