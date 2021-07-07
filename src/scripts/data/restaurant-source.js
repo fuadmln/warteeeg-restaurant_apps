@@ -3,15 +3,23 @@ import CONFIG from '../globals/config';
 
 class RestaurantSource {
   static async restaurantsList() {
-    const response = await fetch(API_ENDPOINT.LIST);
-    const responseJson = await response.json();
-    return responseJson.restaurants;
+    try {
+      const response = await fetch(API_ENDPOINT.LIST);
+      const responseJson = await response.json();
+      return responseJson.restaurants;
+    } catch (e) {
+      return false;
+    }
   }
 
   static async searchReastaurant(query) {
-    const response = await fetch(API_ENDPOINT.SEARCH(query));
-    const responseJson = await response.json();
-    return responseJson.restaurants;
+    try {
+      const response = await fetch(API_ENDPOINT.SEARCH(query));
+      const responseJson = await response.json();
+      return responseJson.restaurants;
+    } catch (e) {
+      return false;
+    }
   }
 
   static async detailRestaurant(id) {
