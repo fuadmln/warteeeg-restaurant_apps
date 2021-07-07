@@ -41,7 +41,11 @@ const CacheHelper = {
 
   async _addCache(request) {
     const cache = await this._openCache();
-    cache.add(request);
+    cache.add(request)
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
   },
 };
 
