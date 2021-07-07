@@ -25,11 +25,11 @@ const createRestaurantDetail = (restaurantData) => {
   return `
   <div class="restaurant">
     <img src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" crossorigin="anonymous" alt="${restaurant.name}">
-    <div class="res__info">
+    <div class="res__info" tabindex="0">
       <h2 class="res__name">${restaurant.name}</h2>
       <p class="res__desc">${restaurant.description}</p>
     </div>
-    <ul class="info-list">
+    <ul class="info-list" tabindex="0">
       <li>
           <span class="label">Rating</span>
           <span class="colon">:</span>
@@ -63,14 +63,14 @@ const createMenuSection = (restaurantData) => {
   const drinkList = () => restaurant.menus.drinks.map((drink) => `<li>${drink.name}</li>`).join('');
 
   return `
-    <h2>Menus</h2>
-    <div class="foods">
+    <h2 tabindex="0">Menus</h2>
+    <div class="foods" tabindex="0">
       <h3>Foods</h3>
       <ul>
         ${foodList()}
       </ul>
     </div>
-    <div class="drinks">
+    <div class="drinks" tabindex="0">
       <h3>Drinks</h3>
       <ul>
         ${drinkList()}       
@@ -93,8 +93,8 @@ const createReviewSection = (restaurantData) => {
       </div>`).join('');
 
   return `
-    <h2>Reviews</h2>
-    <div class="reviews">
+    <h2 tabindex="0">Reviews</h2>
+    <div class="reviews" tabindex="0">
       ${reviews()}
     </div>
     <div class="add-review">
@@ -147,9 +147,9 @@ const createSearchResults = (restaurants) => {
   `;
 };
 
-const createLikeButtonTemplate = () => '<button class="like-btn">&#9825;</button>';
+const createLikeButtonTemplate = () => '<button class="like-btn" aria-label="save to favorite">&#9825;</button>';
 
-const createLikedButtonTemplate = () => '<button class="like-btn" style="font-size: 36px;">&#9829;</button>';
+const createLikedButtonTemplate = () => '<button class="like-btn" aria-label="unsave to favorite" style="font-size: 36px;">&#9829;</button>';
 
 const createLoader = () => '<div class="loader" id="loader"></div>';
 
