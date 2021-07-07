@@ -115,7 +115,7 @@ const createSearchResults = (restaurants) => {
 
   if (restaurants.length) {
     results = restaurants.map((restaurant) => `
-      <div class="restaurant">
+      <div class="restaurant" tabindex="0">
         <div class="image">
           <img src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" crossorigin="anonymous" alt="${restaurant.name}">
           <div class="rating">${restaurant.rating}<span class="star" aria-label="rating star">★</span></div>
