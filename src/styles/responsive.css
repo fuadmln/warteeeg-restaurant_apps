@@ -2,9 +2,6 @@
 @media only screen and (min-width: 600px) {
     body{
         margin-top: 75px; /*sesuai tinggi header */
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     header .brand h1{
@@ -75,6 +72,11 @@
         padding: 30px 30px;
     }
 
+    #detail .res__info, #detail .info-list, #menu, #review{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
     .res__info{
         padding: 10px 18px 18px;
     }
@@ -85,6 +87,12 @@
 
     .like-btn{
         right: 32px;
+    }
+
+    .search-wrapper, h2.search-query, .results, #favorite{
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .results{
@@ -99,7 +107,14 @@
 /* DEESKTOP DEVICE LAYOUT */
 @media only screen and (min-width: 992px) {
     .explore{
-        padding: 30px 50px;
+        padding: 30px 0;
+        width: 86%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search-wrapper, h2.search-query, .results, #favorite{
+        width: 86%;
     }
 
     .detail .restaurant{
@@ -107,14 +122,14 @@
         grid-template-areas: 
         "image image"
         "desc info-list";
-        grid-template-columns: 66% 34%;
+        grid-template-columns: 64% 36%;
     }
 
     .detail .restaurant>img{
         grid-area: image;
     }
 
-    .detail .restaurant .info-list{
+    #detail .restaurant .info-list{
         grid-area: info-list;
         display: flex;
         flex-direction: column;
@@ -122,17 +137,32 @@
         padding-right: 32px;
     }
 
-    .detail .restaurant .res__info{
+    #detail .restaurant .res__info{
         grid-area: desc;
-        padding-bottom: 24px;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
+        padding: 16px 12px 24px 32px;
     }
 
     .detail .restaurant .res__desc{
-        width: 90%;
+        width: 96%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+   #detail, #menu, #review{
+        width: 86%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 32px;
+        padding-right: 32px;
+        background-color: white;
+    }
+
+    #detail{
+        padding-left: 0;
+        padding-right: 0;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        overflow: hidden;
     }
 
     .like-btn{
@@ -227,4 +257,16 @@
         margin-bottom: 0;
     }
 
+    
+    #favorite{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+    .jumbotron{
+        min-width: 1000px;
+    }
 }
