@@ -3,6 +3,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -51,7 +52,20 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, 'src/public/w.png'),
       outputPath: '/images/favicons',
-      prefix: 'favicons/',
+      prefix: '/images/favicons/',
+      favicons: {
+        appName: 'Warteeeg Restauran App',
+        appShortName: 'Warteeeg',
+        appDescription: 'Best app to find your favourite restaurant',
+        developerName: 'Fuad Maulana',
+        developerURL: 'http://github.com/fuadmln',
+        background: '#fff',
+        theme_color: '#fcd34d',
+        display: 'standalone',
+      },
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.resolve(__dirname, 'src/scripts/sw.js'),
     }),
   ],
 };
