@@ -1,0 +1,150 @@
+/* SEARCH PAGE */
+.search-wrapper{
+    padding: 12px;
+}
+
+.search{
+    width: 100%;
+    height: 44px;
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.16), 0 2px 6px rgba(0,0,0,0.23);
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    align-content: center;
+}
+
+.search button{
+    display: inline-block;
+    padding-left: 12px;
+    max-width: 36px;
+    background-color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+.search button svg{
+    height: 24px;
+    width: 24px;
+    color: rgb(154, 160, 166);
+    fill: rgb(154, 160, 166);
+}
+
+.search input[type="search"]{
+    display: inline-block;
+    width: 100%;
+    height: 44px;
+    padding: 0 16px 0 8px;
+    outline: none;
+    font-size: 16px;
+    border: 0;
+    color: rgb(60, 64, 67);
+}
+
+h2.search-query{
+    margin: 8px 0;
+    padding: 0 12px;
+    font-size: 18px;
+}
+
+#search-query{
+    font-style: italic;
+}
+
+#search-query::before{
+    content: "\2018";
+}
+
+#search-query::after{
+    content: "\2019";
+}
+
+.results{
+    padding: 0 12px;
+}
+
+.results .restaurant{
+    display: flex;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: rgb(49 53 59 / 70%) 1px 2px 6px 0;
+}
+
+.results .restaurant .image{
+    position: relative;
+    width: 100px;
+    height: 80px;
+    min-width: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.results .restaurant img{
+    width: 100%;
+    height: 100%;
+}
+
+.results .restaurant .rating{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, .8);
+    color: black;
+}
+
+.results .restaurant .info{
+    padding: 5px 12px;
+}
+
+.results .restaurant h3{
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    letter-spacing: .8px;
+}
+
+.results .restaurant h3 a{
+    text-decoration: none;
+    color: black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-width: 44px;
+}
+
+.results .restaurant h3 a:hover{
+    text-decoration: underline;
+}
+
+.results .restaurant p{
+    font-size: 13px;
+    word-wrap: none;
+    /* max line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.results .restaurant .desc{
+    color: rgba(0, 0, 0, .54);
+}
+
+.no-results{
+    margin-top: 24px;
+}
+
+.no-results p:first-child{
+    color: #DC2626;
+    font-style: italic;
+}
+
+.no-results p:last-child{
+    font-size: .9em;
+}
