@@ -251,6 +251,7 @@
 
     .results{
         gap: 18px 15px;
+        margin-bottom: 16px;
     }
 
     .results .restaurant{
