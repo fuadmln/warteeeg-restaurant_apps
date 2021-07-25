@@ -3,78 +3,56 @@ import RestaurantSource from '../../data/restaurant-source';
 import {
   createRestaurantDetail,
   createMenuSection,
-  createReviewSection,
   createLoader,
+  createErrorFetchMessage,
 } from '../templates/restaurant-creator';
+import '../../components/post-review-form';
+import '../../components/review-list';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
   async render() {
     return `
       <div class="detail" id="detail"></div>
+
       <section class="menu" id="menu">${createLoader()}</section>
-      <section class="review-section" id="review"></section>
+
+      <section class="review-section" id="review">
+        <h2 tabindex="0">Reviews</h2>
+        <review-list class="reviews" tabindex="0"></review-list>
+        <div class="add-review">
+          <h3>Add review</h3>
+          <div id="form-message" class="form-message"></div>
+          <post-review id="post-review"></post-review>
+        </div>
+      </section>
       <div id="like-button-container"></div>
     `;
   },
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await RestaurantSource.detailRestaurant(url.id);
+    const restaurantData = await RestaurantSource.detailRestaurant(url.id);
 
-    if (!restaurant) {
+    if (!restaurantData) {
       const main = document.querySelector('#main');
-      main.innerHTML = `
-        <div id='no-connection' style="text-align: center; font-weight: bold; padding: 12px">
-          FAILED TO FETCH
-          <br>
-          Check your internet connection
-        </div>`;
+      main.innerHTML = createErrorFetchMessage();
       return;
     }
 
     const detailContainer = document.querySelector('#detail');
     const menuContainer = document.querySelector('#menu');
-    const reviewContainer = document.querySelector('#review');
+    const reviewListElm = document.querySelector('review-list');
+    const form = document.querySelector('#post-review');
 
-    detailContainer.innerHTML = createRestaurantDetail(restaurant);
-    menuContainer.innerHTML = createMenuSection(restaurant);
-    reviewContainer.innerHTML = createReviewSection(restaurant);
+    detailContainer.innerHTML = createRestaurantDetail(restaurantData);
+    menuContainer.innerHTML = createMenuSection(restaurantData);
+    reviewListElm.reviews = restaurantData.restaurant.customerReviews;
+    form.url = url;
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#like-button-container'),
-      restaurant: restaurant.restaurant,
-    });
-
-    const form = document.querySelector('#post-review');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.querySelector('#comment-name');
-      const review = document.querySelector('#review-comment');
-      const formMessage = document.querySelector('#form-message');
-
-      if (name.value && review.value) {
-        const reviewData = {
-          id: url.id,
-          name: name.value,
-          review: review.value,
-        };
-
-        const postResponse = await RestaurantSource.postRestaurantReview(reviewData);
-
-        if (postResponse.status === 200) {
-          form.reset();
-          formMessage.innerHTML = 'Review succesfully posted';
-          formMessage.style.color = 'green';
-        } else {
-          formMessage.innerHTML = 'Can\'t sent review, error has been occured';
-          formMessage.style.color = 'red';
-        }
-      } else {
-        formMessage.innerHTML = 'Name and review required to fill';
-        formMessage.style.color = 'red';
-      }
+      restaurant: restaurantData.restaurant,
     });
   },
 };

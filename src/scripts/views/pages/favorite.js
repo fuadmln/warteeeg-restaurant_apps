@@ -1,27 +1,24 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
-import { createRestaurantTemplate } from '../templates/restaurant-creator';
+import '../../components/restaurant-list';
 
 const Favorite = {
   async render() {
     return `
       <section id="favorite">
         <h2>Favorite Restaurants</h2>
-        <div class="explore__items" id="favorites"></div>
+        <restaurant-list class="explore__items" id="favorites"></restaurant-list>
       </section>
     `;
   },
 
   async afterRender() {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+    const favoritesContainer = document.querySelector('#favorites');
 
-    const exploreRestaurantElement = document.querySelector('#favorites');
-
-    if (restaurants.length !== 0) {
-      restaurants.forEach((restaurant) => {
-        exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
-      });
+    if (restaurants.length) {
+      favoritesContainer.restaurants = restaurants;
     } else {
-      exploreRestaurantElement.innerHTML = `
+      favoritesContainer.innerHTML = `
         <div class="no-results" style="text-align: center;">
           <p>No favorite restaurant yet</p>
         </div>

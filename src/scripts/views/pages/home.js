@@ -1,5 +1,6 @@
 import RestaurantSource from '../../data/restaurant-source';
-import { createRestaurantTemplate, createLoader } from '../templates/restaurant-creator';
+import { createLoader, createErrorFetchMessage } from '../templates/restaurant-creator';
+import '../../components/restaurant-list';
 
 const Home = {
   async render() {
@@ -12,9 +13,8 @@ const Home = {
 
     <section class="explore">
         <h2>Explore Restaurant</h2>
-        <div class="explore__items" id="explore-restaurants">
-          ${createLoader()}
-        </div>
+        ${createLoader()}
+        <restaurant-list class="explore__items" id="explore-restaurants"></restaurant-list>
     </section>
     `;
   },
@@ -22,26 +22,16 @@ const Home = {
   async afterRender() {
     const restaurants = await RestaurantSource.restaurantsList();
     const loader = document.querySelector('#loader');
+    loader.style.display = 'none';
 
     if (!restaurants) {
-      loader.style.display = 'none';
-      const main = document.querySelector('#explore-restaurants');
-      main.innerHTML = `
-        <div id='no-connection' style="text-align: center; font-weight: bold; padding: 12px">
-          FAILED TO FETCH
-          <br>
-          Check your internet connection
-        </div>`;
+      const restaurantListElm = document.querySelector('#explore-restaurants');
+      restaurantListElm.innerHTML = createErrorFetchMessage();
       return;
     }
 
-    const exploreRestaurantElement = document.querySelector('#explore-restaurants');
-
-    loader.style.display = 'none';
-
-    restaurants.forEach((restaurant) => {
-      exploreRestaurantElement.innerHTML += createRestaurantTemplate(restaurant);
-    });
+    const restaurantList = document.querySelector('restaurant-list');
+    restaurantList.restaurants = restaurants;
   },
 };
 
